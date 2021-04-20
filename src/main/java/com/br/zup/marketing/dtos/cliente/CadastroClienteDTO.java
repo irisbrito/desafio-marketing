@@ -48,6 +48,22 @@ public class CadastroClienteDTO {
         this.telefone = telefone;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     public Cliente converterDTOParaModel(){
         Cliente cliente = new Cliente();
         cliente.setId(this.id);

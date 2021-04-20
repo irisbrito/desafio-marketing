@@ -12,7 +12,7 @@ public class Produto {
     private int id;
     private String nome;
 
-    @OneToMany
+    @ManyToMany
     private List<Categoria> categorias;
 
     public int getId() {
