@@ -23,8 +23,12 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public Iterable <Cliente> listarClientesPeloIdDoProduto(int id) {
+    public Iterable<Cliente> listarClientesPeloIdDoProduto(int id) {
         return clienteRepository.findAllByProdutos_id(id);
+    }
+
+    public Iterable<Cliente> listarClientesPelaCategoriaDoProduto(int id){
+        return clienteRepository.findAllByProdutos_categorias_id(id);
     }
 
 }

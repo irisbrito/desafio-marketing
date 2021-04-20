@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
 
     Iterable<Cliente> findAllByProdutos_id(int id);
+    Iterable<Cliente> findAllByProdutos_categorias_id(int id);
 }

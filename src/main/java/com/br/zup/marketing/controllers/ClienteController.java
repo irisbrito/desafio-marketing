@@ -34,6 +34,11 @@ public class ClienteController {
         return clienteService.listarClientesPeloIdDoProduto(id);
     }
 
+    @GetMapping("categoria/{id}")
+    public Iterable<Cliente> buscarClientesPelaCategoriaDoProduto(@PathVariable int id){
+        return clienteService.listarClientesPelaCategoriaDoProduto(id);
+    }
+
     @DeleteMapping("{id}/")
     @ResponseStatus(HttpStatus.OK)
     public void deletarCliente(@PathVariable int id){
