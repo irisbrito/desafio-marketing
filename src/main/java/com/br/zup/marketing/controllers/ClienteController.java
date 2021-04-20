@@ -23,6 +23,12 @@ public class ClienteController {
         return cliente;
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Cliente> buscarClientes(){
+        return clienteService.buscarClientes();
+    }
+
     @DeleteMapping("{id}/")
     @ResponseStatus(HttpStatus.OK)
     public void deletarCliente(@PathVariable int id){

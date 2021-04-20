@@ -19,4 +19,8 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
+    public Iterable<Cliente> buscarClientes(){
+        return clienteRepository.findAll();
+    }
+
 }
