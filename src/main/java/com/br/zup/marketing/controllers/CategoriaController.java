@@ -20,4 +20,10 @@ public class CategoriaController {
         Categoria categoria = categoriaService.cadastrarCategoria(categoriaDTO.converterDTOParaModel());
         return categoria;
     }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Categoria> buscarCategorias(){
+        return categoriaService.retornarCategorias();
+    }
 }
