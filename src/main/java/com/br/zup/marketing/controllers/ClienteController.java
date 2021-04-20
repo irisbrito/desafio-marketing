@@ -22,4 +22,10 @@ public class ClienteController {
         Cliente cliente = clienteService.cadastrarCliente(clienteDTO.converterDTOParaModel());
         return cliente;
     }
+
+    @DeleteMapping("{id}/")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletarCliente(@PathVariable int id){
+        clienteService.deletarCliente(id);
+    }
 }

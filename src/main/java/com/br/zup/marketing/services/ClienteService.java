@@ -15,5 +15,8 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
+    public void deletarCliente(int id){
+        clienteRepository.deleteById(id);
+    }
 
 }
