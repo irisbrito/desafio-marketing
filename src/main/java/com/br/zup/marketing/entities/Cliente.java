@@ -10,11 +10,12 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String email;
     private String nomeCompleto;
     private String telefone;
 
-    @OneToMany
+    @ManyToMany
     private List<Produto> produtos;
 
     public Cliente() {
