@@ -26,4 +26,10 @@ public class CategoriaController {
     public Iterable<Categoria> buscarCategorias(){
         return categoriaService.retornarCategorias();
     }
+
+    @DeleteMapping("{id}/")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletarCategoria(@PathVariable int id){
+        categoriaService.deletarCategoria(id);
+    }
 }
