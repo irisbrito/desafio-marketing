@@ -23,4 +23,8 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
+    public Iterable <Cliente> listarClientesPeloIdDoProduto(int id) {
+        return clienteRepository.findAllByProdutos_id(id);
+    }
+
 }
