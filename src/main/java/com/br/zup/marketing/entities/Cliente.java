@@ -14,7 +14,7 @@ public class Cliente {
     private String nomeCompleto;
     private String telefone;
 
-    @OneToMany
+    @ManyToMany
     private List<Produto> produtos;
 
     public Cliente() {

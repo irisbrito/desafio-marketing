@@ -1,4 +1,4 @@
-package com.br.zup.marketing.dtos;
+package com.br.zup.marketing.dtos.cliente;
 
 import com.br.zup.marketing.entities.Cliente;
 import com.br.zup.marketing.entities.Produto;

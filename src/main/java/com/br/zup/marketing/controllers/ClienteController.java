@@ -1,6 +1,6 @@
 package com.br.zup.marketing.controllers;
 
-import com.br.zup.marketing.dtos.CadastroClienteDTO;
+import com.br.zup.marketing.dtos.cliente.CadastroClienteDTO;
 import com.br.zup.marketing.entities.Cliente;
 import com.br.zup.marketing.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
