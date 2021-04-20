@@ -5,6 +5,8 @@ import com.br.zup.marketing.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProdutoService {
 
@@ -17,6 +19,16 @@ public class ProdutoService {
 
     public Iterable<Produto> buscarProdutos(){
         return produtoRepository.findAll();
+    }
+
+    public Produto pesquisarProdutoPeloNome(String nome){
+        Optional<Produto> optionalProduto = produtoRepository.findByNome(nome);
+
+        if (optionalProduto.isPresent()) {
+            return optionalProduto.get();
+        }
+
+        throw new RuntimeException("Produto não existe");
     }
 
 }
