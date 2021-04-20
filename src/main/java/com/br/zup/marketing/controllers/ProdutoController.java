@@ -22,4 +22,10 @@ public class ProdutoController {
         Produto produto  = produtoService.cadastrarProduto(produtoDTO.converterDTOParaModel());
         return produto;
     }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Produto> buscarProdutos(){
+        return produtoService.buscarProdutos();
+    }
 }

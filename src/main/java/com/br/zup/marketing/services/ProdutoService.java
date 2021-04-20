@@ -15,4 +15,8 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
+    public Iterable<Produto> buscarProdutos(){
+        return produtoRepository.findAll();
+    }
+
 }
