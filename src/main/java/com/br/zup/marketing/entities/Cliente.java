@@ -9,6 +9,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String email;
     private String nomeCompleto;
     private String telefone;
@@ -17,6 +18,14 @@ public class Cliente {
     private List<Produto> produtos;
 
     public Cliente() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
