@@ -1,6 +1,7 @@
 package com.br.zup.marketing.services;
 
 import com.br.zup.marketing.entities.Cliente;
+import com.br.zup.marketing.exceptions.ClienteNaoEncontradoException;
 import com.br.zup.marketing.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class ClienteService {
             Cliente objCliente = cadastrarCliente(cliente);
             return cliente;
         }
-        throw new RuntimeException("Cliente não encontrado");
+        throw new ClienteNaoEncontradoException("Cliente não encontrado");
     }
 
 }
