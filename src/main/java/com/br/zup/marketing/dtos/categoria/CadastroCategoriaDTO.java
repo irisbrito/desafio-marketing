@@ -12,7 +12,7 @@ public class CadastroCategoriaDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull(message = "Nome da categoria é obrigatório")
+    @NotNull(message = "{validacao.categoria}")
     private String nome;
 
     public CadastroCategoriaDTO() {
