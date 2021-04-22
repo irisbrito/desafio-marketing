@@ -14,9 +14,9 @@ public class CadastroProdutoDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull(message = "Nome do produto é obrigatório")
+    @NotNull(message = "{validacao.nome_produto}")
     private String nome;
-    @NotNull(message = "Deve incluir ao menos uma categoria")
+    @NotNull(message = "{validacao.incluir_categoria}")
     private List<Categoria> categorias;
 
     public int getId() {

@@ -16,12 +16,13 @@ public class CadastroClienteDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Email(message = "Email inválido")
+    @Email(message = "{validacao.email_invalido}")
     private String email;
-    @NotNull(message = "Nome completo é obrigatório")
+    @NotNull(message = "{validacao.nome_completo}")
     private String nomeCompleto;
-    @NotNull(message = "O telefone é obrigatório")
+    @NotNull(message = "{validacao.telefone}")
     private String telefone;
+    @NotNull(message = "{validacao.produtos}")
     private List<Produto> produtos;
 
     public String getEmail() {
