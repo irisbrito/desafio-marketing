@@ -1,6 +1,7 @@
 package com.br.zup.marketing.services;
 
 import com.br.zup.marketing.entities.Produto;
+import com.br.zup.marketing.exceptions.ProdutoNaoEncontradoException;
 import com.br.zup.marketing.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class ProdutoService {
             return optionalProduto.get();
         }
 
-        throw new RuntimeException("Produto não existe");
+        throw new ProdutoNaoEncontradoException("Produto não existe");
     }
 
 }
