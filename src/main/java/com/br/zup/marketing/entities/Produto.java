@@ -13,6 +13,10 @@ public class Produto {
     private String nome;
 
     @ManyToMany
+    @JoinTable(
+            name = "produtos_categorias",
+            joinColumns = @JoinColumn(name = "produtos_id"),
+            inverseJoinColumns = @JoinColumn(name = "categorias_id"))
     private List<Categoria> categorias;
 
     public int getId() {

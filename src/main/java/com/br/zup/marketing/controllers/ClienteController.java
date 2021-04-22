@@ -30,14 +30,14 @@ public class ClienteController {
         return clienteService.buscarClientes();
     }
 
-    @GetMapping("buscarClientesPeloProduto/{id}/")
-    public Iterable<Cliente> buscarClientesPeloIdDoProduto(@PathVariable int id){
-        return clienteService.listarClientesPeloIdDoProduto(id);
+    @GetMapping("produto/{nome}/")
+    public Iterable<Cliente> buscarClientesPeloNomeDoProduto(@PathVariable String nome){
+        return clienteService.listarClientesPeloNomeDoProduto(nome);
     }
 
-    @GetMapping("categoria/{id}")
-    public Iterable<Cliente> buscarClientesPelaCategoriaDoProduto(@PathVariable int id){
-        return clienteService.listarClientesPelaCategoriaDoProduto(id);
+    @GetMapping("categoria/{nome}/")
+    public Iterable<Cliente> buscarClientesPelaCategoriaDoProduto(@PathVariable String nome){
+        return clienteService.listarClientesPelaCategoriaDoProduto(nome);
     }
 
     @PutMapping("{id}/")
