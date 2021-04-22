@@ -31,4 +31,12 @@ public class ClienteService {
         return clienteRepository.findAllByProdutos_categorias_id(id);
     }
 
+    public Cliente atualizarCliente(Cliente cliente){
+        if(clienteRepository.existsById(cliente.getId())){
+            Cliente objCliente = cadastrarCliente(cliente);
+            return cliente;
+        }
+        throw new RuntimeException("Cliente não encontrado");
+    }
+
 }

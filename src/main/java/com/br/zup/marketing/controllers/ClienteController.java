@@ -1,5 +1,6 @@
 package com.br.zup.marketing.controllers;
 
+import com.br.zup.marketing.dtos.cliente.AtualizarClienteDTO;
 import com.br.zup.marketing.dtos.cliente.CadastroClienteDTO;
 import com.br.zup.marketing.entities.Cliente;
 import com.br.zup.marketing.services.ClienteService;
@@ -38,6 +39,13 @@ public class ClienteController {
     public Iterable<Cliente> buscarClientesPelaCategoriaDoProduto(@PathVariable int id){
         return clienteService.listarClientesPelaCategoriaDoProduto(id);
     }
+
+    @PutMapping("{id}/")
+    public Cliente atualizarCliente(@PathVariable int id, @RequestBody @Valid AtualizarClienteDTO clienteDTO){
+        Cliente cliente = clienteService.atualizarCliente(clienteDTO.converterDTOParaModel(id));
+        return cliente;
+    }
+
 
     @DeleteMapping("{id}/")
     @ResponseStatus(HttpStatus.OK)
