@@ -56,4 +56,14 @@ public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
 
         return respostaDeErro;
     }
+
+    @ExceptionHandler({CategoriaNaoEncontradaException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public RespostaDeErro manipularCategoriaNaoEncontrada(CategoriaNaoEncontradaException erro){
+        ObjetoDeErro objetoDeErro = new ObjetoDeErro(erro.getMessage(), erro.getCampo());
+        RespostaDeErro respostaDeErro = new RespostaDeErro(erro.getTipoDoErro(), erro.getStatus(), erro.getRazaoDoErro(),
+                Arrays.asList(objetoDeErro));
+
+        return respostaDeErro;
+    }
 }
