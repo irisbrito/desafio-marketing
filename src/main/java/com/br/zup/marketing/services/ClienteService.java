@@ -22,6 +22,9 @@ public class ClienteService {
     @Autowired
     private ProdutoService produtoService;
 
+    List<Produto> produtos = new ArrayList<>();
+    List<Produto> produtosDoCliente = new ArrayList<>();
+
     public Cliente cadastrarCliente(Cliente cliente){
 
         return clienteRepository.save(cliente);
@@ -74,5 +77,19 @@ public class ClienteService {
 
         return produtosDoCliente;
     }
+
+    public List<Produto> adicionarProdutosNaListaDoCliente(Cliente cliente){
+        List<Produto> produtosDoCliente = new ArrayList<>();
+
+        for(Produto produto : cliente.getProdutos()){
+            if(!produtosDoCliente.contains(produto.getNome())){
+                Produto produtoEntity = produtoService.pesquisarProdutoPeloNome(produto.getNome());
+                produtos.add(produtoEntity);
+            }
+        }
+
+        return produtos;
+    }
+
 
 }
