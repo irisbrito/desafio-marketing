@@ -1,10 +1,8 @@
 package com.br.zup.marketing.services;
 
-import com.br.zup.marketing.entities.Categoria;
 import com.br.zup.marketing.entities.Cliente;
 import com.br.zup.marketing.entities.Produto;
 import com.br.zup.marketing.exceptions.ClienteNaoEncontradoException;
-import com.br.zup.marketing.exceptions.ProdutoNaoEncontradoException;
 import com.br.zup.marketing.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +14,14 @@ import java.util.Optional;
 @Service
 public class ClienteService {
 
-    @Autowired
     private ClienteRepository clienteRepository;
+    private ProdutoService produtoService;
 
     @Autowired
-    private ProdutoService produtoService;
+    public ClienteService(ClienteRepository clienteRepository, ProdutoService produtoService) {
+        this.clienteRepository = clienteRepository;
+        this.produtoService = produtoService;
+    }
 
     List<Produto> produtos = new ArrayList<>();
 
@@ -35,16 +36,12 @@ public class ClienteService {
 
         if(clienteEntity != null){
             produtos = clienteEntity.getProdutos();
+            cliente.setId(clienteEntity.getId());
         }
 
         buscarProdutosDoCliente(produtos);
         adicionarProdutosNaListaDoCliente(cliente);
-
         cliente.setProdutos(produtos);
-
-        if(clienteEntity != null){
-            cliente.setId(clienteEntity.getId());
-        }
 
         return clienteRepository.save(cliente);
     }
