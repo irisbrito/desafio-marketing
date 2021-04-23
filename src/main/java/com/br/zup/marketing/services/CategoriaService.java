@@ -1,6 +1,7 @@
 package com.br.zup.marketing.services;
 
 import com.br.zup.marketing.entities.Categoria;
+import com.br.zup.marketing.exceptions.CategoriaNaoEncontradaException;
 import com.br.zup.marketing.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class CategoriaService {
         if(categoria.isPresent()){
             return categoria.get();
         }
-       throw new RuntimeException("Categoria não encontrada");
+       throw new CategoriaNaoEncontradaException("Categoria não encontrada");
     }
 
     public void deletarCategoria(int id){
