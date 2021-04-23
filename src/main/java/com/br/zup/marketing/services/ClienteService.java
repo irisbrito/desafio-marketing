@@ -1,10 +1,17 @@
 package com.br.zup.marketing.services;
 
+import com.br.zup.marketing.entities.Categoria;
 import com.br.zup.marketing.entities.Cliente;
+import com.br.zup.marketing.entities.Produto;
 import com.br.zup.marketing.exceptions.ClienteNaoEncontradoException;
+import com.br.zup.marketing.exceptions.ProdutoNaoEncontradoException;
 import com.br.zup.marketing.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -12,7 +19,11 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    @Autowired
+    private ProdutoService produtoService;
+
     public Cliente cadastrarCliente(Cliente cliente){
+
         return clienteRepository.save(cliente);
     }
 
@@ -28,8 +39,12 @@ public class ClienteService {
         return clienteRepository.findAllByProdutos_id(id);
     }
 
-    public Iterable<Cliente> listarClientesPelaCategoriaDoProduto(int id){
-        return clienteRepository.findAllByProdutos_categorias_id(id);
+    public Iterable<Cliente> listarClientesPeloNomeDoProduto(String nome) {
+        return clienteRepository.findAllByProdutosNome(nome);
+    }
+
+    public Iterable<Cliente> listarClientesPelaCategoriaDoProduto(String nome){
+        return clienteRepository.findAllByProdutosCategoriasNome(nome);
     }
 
     public Cliente atualizarCliente(Cliente cliente){
@@ -38,6 +53,16 @@ public class ClienteService {
             return cliente;
         }
         throw new ClienteNaoEncontradoException("Cliente não encontrado");
+    }
+
+    public Cliente pesquisarClientePeloEmail(String email){
+        Optional<Cliente> opitionalCliente = clienteRepository.findByEmail(email);
+
+        if (opitionalCliente.isPresent()) {
+            return opitionalCliente.get();
+        }
+
+        throw new ClienteNaoEncontradoException("Cliente não existe");
     }
 
 }
