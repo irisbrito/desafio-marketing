@@ -65,4 +65,14 @@ public class ClienteService {
         throw new ClienteNaoEncontradoException("Cliente não existe");
     }
 
+    public List<Produto> buscarProdutosDoCliente(List<Produto> produtos){
+        List<Produto> produtosDoCliente = new ArrayList<>();
+
+        for(Produto produto : produtos){
+            produtosDoCliente.add(produtoService.pesquisarProdutoPeloNome(produto.getNome()));
+        }
+
+        return produtosDoCliente;
+    }
+
 }
