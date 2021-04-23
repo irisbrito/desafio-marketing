@@ -23,9 +23,28 @@ public class ClienteService {
     private ProdutoService produtoService;
 
     List<Produto> produtos = new ArrayList<>();
-    List<Produto> produtosDoCliente = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente){
+        Cliente clienteEntity = null;
+
+        try{
+            clienteEntity = pesquisarClientePeloEmail(cliente.getEmail());
+        }catch (Exception erro) {
+            System.out.println("Cliente não encontrado, cadastrando cliente");
+        }
+
+        if(clienteEntity != null){
+            produtos = clienteEntity.getProdutos();
+        }
+
+        buscarProdutosDoCliente(produtos);
+        adicionarProdutosNaListaDoCliente(cliente);
+
+        cliente.setProdutos(produtos);
+
+        if(clienteEntity != null){
+            cliente.setId(clienteEntity.getId());
+        }
 
         return clienteRepository.save(cliente);
     }
