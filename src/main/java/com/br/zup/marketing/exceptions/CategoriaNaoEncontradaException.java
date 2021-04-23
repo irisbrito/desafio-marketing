@@ -2,7 +2,7 @@ package com.br.zup.marketing.exceptions;
 
 public class CategoriaNaoEncontradaException extends RuntimeException{
     private int Status = 400;
-    private String campo = "id";
+    private String campo = "nome";
     private String razaoDoErro = "Bad request";
     private String tipoDoErro = "Categoria não cadastrada";
 
